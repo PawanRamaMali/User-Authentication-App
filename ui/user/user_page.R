@@ -1,8 +1,8 @@
 library(shinydashboard)
 
-source('./components/user/user_header.R')
-source('./components/user/user_sidebar.R')
-source('./components/user/user_body.R')
+source('ui/user/user_header.R')
+source('ui/user/user/user_sidebar.R')
+source('ui/user/user/user_body.R')
 
 
 dashboardPage(
