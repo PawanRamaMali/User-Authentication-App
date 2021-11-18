@@ -1,17 +1,4 @@
-#' Shiny UI Module for use with \link{logout}
-#'
-#' Call via \code{logoutUI("your_id")}
-#'
-#' @param id Shiny id
-#' @param label label for the logout button
-#' @param icon An optional \code{\link[shiny]{icon}} to appear on the button.
-#' @param class bootstrap class for the logout button
-#' @param style css styling for the logout button
-#'
-#' @return Shiny UI action button
-#'
-#'
-#' @export
+
 logoutUI <- function(id, label = "Log out", icon = NULL, class = "btn-danger", style = "color: white;") {
   ns <- shiny::NS(id)
   
@@ -20,29 +7,7 @@ logoutUI <- function(id, label = "Log out", icon = NULL, class = "btn-danger", s
   )
 }
 
-#' logout server module
-#'
-#' Shiny authentication module for use with \link{logoutUI}
-#'
-#' Call via \code{shiny::callModule(logout, "your_id", ...)}
-#'
-#' @param input shiny input
-#' @param output shiny output
-#' @param session shiny session
-#' @param active [reactive] supply the returned \code{user_auth} boolean reactive from \link{login}
-#'   here to hide/show the logout button
-#'
-#' @return The reactive output of this module should be supplied as the \code{log_out} argument to the
-#'   \link{login} module to trigger the logout process
-#'
-#'
-#' @examples
-#' \dontrun{
-#'   logout_init <- shiny::callModule(logout, "logout",
-#'                                    active = reactive(user_credentials()$user_auth))
-#' }
-#'
-#' @export
+
 logout <- function(input, output, session, active) {
   
   shiny::observeEvent(active(), ignoreInit = TRUE, {
@@ -54,17 +19,6 @@ logout <- function(input, output, session, active) {
 }
 
 
-#' @param id Shiny id
-#' @param title header title for the login panel
-#' @param user_title label for the user name text input
-#' @param pass_title label for the password text input
-#' @param login_title label for the login button
-#' @param error_message message to display after failed login
-#'
-#' @return Shiny UI
-#'
-#'
-#' @export
 loginUI <- function(id, title = "Please log in", user_title = "User Name", pass_title = "Password",
                     login_title = "Log in", error_message = "Invalid username or password!") {
   ns <- shiny::NS(id)
@@ -92,36 +46,6 @@ loginUI <- function(id, title = "Please log in", user_title = "User Name", pass_
 }
 
 
-#' @param input shiny input
-#' @param output shiny output
-#' @param session shiny session
-#' @param data data frame or tibble containing usernames, passwords and other user data
-#' @param user_col bare (unquoted) column name containing usernames
-#' @param pwd_col bare (unquoted) column name containing passwords
-#' @param sodium_hashed have the passwords been hash encrypted using the sodium package? defaults to FALSE
-#' @param hashed Deprecated. shinyauthr now uses the sodium package for password hashing and decryption. If you have previously hashed your passwords with the digest package to use with shinyauthr please re-hash them with sodium for decryption to work. 
-#' @param algo Deprecated
-#' @param log_out [reactive] supply the returned reactive from \link{logout} here to trigger a user logout
-#'
-#' @return The module will return a reactive 2 element list to your main application. 
-#'   First element \code{user_auth} is a boolean inditcating whether there has been
-#'   a successful login or not. Second element \code{info} will be the data frame provided
-#'   to the function, filtered to the row matching the succesfully logged in username. 
-#'   When \code{user_auth} is FALSE \code{info} is NULL.
-#'
-#' 
-#' @importFrom rlang :=
-#' 
-#' @examples
-#' \dontrun{
-#'   user_credentials <- shiny::callModule(login, "login", 
-#'                                         data = user_base,
-#'                                         user_col = user,
-#'                                         pwd_col = password,
-#'                                         log_out = reactive(logout_init()))
-#' }
-#'
-#' @export
 login <- function(input, output, session, data, user_col, pwd_col, sodium_hashed = FALSE, hashed, algo, log_out = NULL) {
   
   if (!missing(hashed)) {
