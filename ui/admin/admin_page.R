@@ -1,10 +1,10 @@
 library(shinydashboard)
 
-Build <-
-  source('./ui/admin/build_page.R', local = TRUE)
+Build <- source('./ui/admin/build_page.R', local = TRUE)
 
-About <-
-  source('./ui/admin/about_page.R', local = TRUE)
+Settings <- source('./ui/settings.R', local = TRUE)
+
+About <- source('./ui/admin/about_page.R', local = TRUE)
 
 LogoutButton <- source('./functions/logout.R', local = TRUE)$value
 
@@ -42,6 +42,8 @@ fluidPage(
       Build$value,
       
       
+      # Settings Page ----
+      Settings$value,
       
       # About Page ----
       About$value
