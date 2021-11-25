@@ -1,44 +1,32 @@
 
-.navbar .navbar-header {
-  float: left;
-  z-index: 10;
-  
-}
-
-.navbar .navbar-default .navbar-static-top{
-  z-index: 10;
-}
-
-.navbar-default {
-    z-index: -2;
-}
 .navbar-form {
-    margin-top: 0px;
-    margin-bottom: 0px
+  margin:0px;
 }
+
+.navbar .navbar-header{
+  margin-top:-5px;
+}
+
+.navbar-default{  /*#0c78b3*/
+  position: relative;
+  width:100%;
+}
+
+
 
 #Logout {
-  color: white;
-  background-color: transparent !important;
-  display: inline-block;
-  padding: 16px 0px ;
-  margin-bottom: 0 ;
-  font-size: 14px ;
-  font-weight: 600 ;
-  line-height: 1.42857143 ;
-  text-align: center ;
-  white-space: nowrap ;
-  vertical-align: middle ;
-  cursor: pointer ;
-  background-image: none ;
-  border: none ;
-  outline: none ;
-  float:right;
-  -webkit-text-stroke-width: 0.2px;
-  -webkit-text-stroke-color: blue;
-    
-}
 
-#Logout:hover {
-  color: #ffffff !important;
+
+display: inline-block;
+padding: 16px 0px ;
+margin-bottom: 0 ;
+
+text-align: left ;
+white-space: nowrap ;
+vertical-align: middle ;
+cursor: pointer ;
+background-image: none ;
+border: none ;
+outline: none ;
+float:right;
 }
